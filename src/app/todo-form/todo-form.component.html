@@ -1,0 +1,15 @@
+<form class="input-wrapper">
+  <label for="title" class="input-wrapper__label">Enter title</label>
+  <input type="text" [(ngModel)]="title" name="title" required minlength="3" maxlength="25" #titleInput="ngModel">
+  <small *ngIf="titleInput.invalid && titleInput.touched" style="color: red">This field is required & min length 5, max 25</small>
+
+  <label for="priority" class="input-wrapper__label">Choose priority</label>
+  <select [(ngModel)]="priority" name="priority">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+  </select>
+
+  <button class="btn-submit" (click)="createTodo()" [disabled]="titleInput.invalid" [ngClass]="{disabled: titleInput.invalid}">Add todo</button>
+
+</form>

@@ -1,0 +1,27 @@
+<div *ngIf="todo.length">
+  <h3>Tasks to do:</h3>
+
+  <table>
+    <tr>
+      <th>Title</th>
+      <th>Issue date</th>
+      <th>Priority</th>
+      <th>Status</th>
+      <th></th>
+    </tr>
+    <tr *ngFor="let t of todo; let idx = index">
+      <td>{{ idx }}. {{ t.title | uppercase }}</td>
+      <td>{{ t.date | date: 'dd/MM/yy' }}</td>
+      <td>
+        <div class="priority-div" [appPriorityColor]="t.priority">
+          {{ t.priority }}
+        </div>
+      </td>
+      <td>{{ t.status }}</td>
+      <td>
+        <button *ngIf="t.status === 'To Do'" (click)="taskDone(t.id)" class="btn">Done</button>
+      </td>
+    </tr>
+  </table>
+
+</div>
